@@ -1,0 +1,25 @@
+{
+    "name": "crowdtruth/ddgameapi",
+    "description": "",
+    "authors": [
+        {
+            "name": "Crowdtruth",
+            "email": "c.martinez@esciencecenter.nl"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "illuminate/support": "4.1.*"
+    },
+    "autoload": {
+        "classmap": [
+            "src/controllers",
+            "src/softwareComponents",
+            "src/seeds"
+        ],
+        "psr-0": {
+            "CrowdTruth\\DDGameapi\\": "src/"
+        }
+    },
+    "minimum-stability": "stable"
+}
