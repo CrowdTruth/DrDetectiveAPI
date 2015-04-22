@@ -20,8 +20,8 @@ class DDGameAPIController extends \Controller {
 	 * 
 	 * Requests should contain the following parameters:
 	 * 
-	 *   signal      Signal to be processed. 'new_judgments' for new judgements
-	 *   payload     a JSON structure with the judgements
+	 *   signal      Signal to be processed. 'new_judgments' for new judgments
+	 *   payload     a JSON structure with the judgments
 	 *   signature   SHA1(payload + API_KEY)  
 	 * 
 	 * API is loosely based on CrowdFlower API:
@@ -39,9 +39,9 @@ class DDGameAPIController extends \Controller {
 				return $this->buildResponse($signal, 'error', 'Signature does not match');
 			}
 			
-			$nJudgements = $this->swcomponent->store($payload);
+			$nJudgments = $this->swcomponent->store($payload);
 			
-			return $this->buildResponse($signal, 'ok', strval($nJudgements['nEntities']).' processed');
+			return $this->buildResponse($signal, 'ok', strval($nJudgments['nEntities']).' processed');
 		} else {
 			return $this->buildResponse($signal, 'error', 'Unknown signal');
 		}

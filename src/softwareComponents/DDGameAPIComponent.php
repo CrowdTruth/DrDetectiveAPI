@@ -24,9 +24,9 @@ class DDGameAPIComponent {
 	}
 	
 	/**
-	 * Store to the database a list of game Judgements.
+	 * Store to the database a list of game Judgments.
 	 * 
-	 * @param $entities List of judgements to be inserted. 
+	 * @param $entities List of judgments to be inserted. 
 	 * 
 	 * @return multitype:string A status array containing the result status information.
 	 */
@@ -40,12 +40,12 @@ class DDGameAPIComponent {
 		// TODO: questions: who should own entities? on which project? with which doctype?
 		$ctUser = 'carlosm';
 		$project = 'nlesc';
-		$docType = 'gamejudgement';
-		$seqName = 'entity/gamejudgement';
+		$docType = 'gamejudgment';
+		$seqName = 'entity/gamejudgment';
 		
 		// The '&' in '&$entity' means we modify the array directly
 		foreach ($entities as $key => &$entity) {
-			$entity['_id'] = $seqName.'/'.$entity['judgement_id'];
+			$entity['_id'] = $seqName.'/'.$entity['judgment_id'];
 			$entity['activity_id'] = $activity->_id;
 			$entity['project'] = $project;
 			$entity['documentType'] = $docType;
@@ -60,7 +60,7 @@ class DDGameAPIComponent {
 			];
 			unset($entity['task_data']);
 			unset($entity['response']);
-			unset($entity['judgement_id']);
+			unset($entity['judgment_id']);
 			
 			$entity['hash'] = md5(serialize($entity['content']));
 			if(Entity::where('_id', $entity['_id'])->exists()) {

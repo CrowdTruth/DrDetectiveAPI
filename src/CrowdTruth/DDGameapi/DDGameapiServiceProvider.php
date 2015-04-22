@@ -24,7 +24,7 @@ class DdgameapiServiceProvider extends ServiceProvider {
 	public function boot()
 	{
 		$this->package('crowdtruth/ddgameapi');
-		\Route::controller('game/detective/', 'CrowdTruth\DDGameapi\DDGameAPIController');
+		include __DIR__.'/../../routes.php';
 	}
 
 	/**
