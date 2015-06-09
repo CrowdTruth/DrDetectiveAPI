@@ -43,6 +43,7 @@ class DDGameAPISeeder extends \Seeder {
 			"cml" => "{{url}}",
 			"format" => "text",
 			"css" => "",
+			"js" => "",
 			"version" => 0,
 			"type" => "Cell Tagging Template",
 			"game_type" => "CellEx",
@@ -61,6 +62,7 @@ class DDGameAPISeeder extends \Seeder {
 			],
 			"platform" => "DrDetectiveGamingPlatform",
 			"user_id" => "carlosm",
+			"instructions" => ""
 		]);
 		
 		$this->createTemplate([
@@ -68,6 +70,7 @@ class DDGameAPISeeder extends \Seeder {
 				"cml" => "{{url}}",
 				"format" => "text",
 				"css" => "",
+				"js" => "",
 				"version" => 0,
 				"type" => "Nucleus tagging Template",
 				"game_type" => "CellEx",
@@ -86,6 +89,7 @@ class DDGameAPISeeder extends \Seeder {
 				],
 				"platform" => "DrDetectiveGamingPlatform",
 				"user_id" => "carlosm",
+				"instructions" => ""
 		]);
 		
 		$this->createTemplate([
@@ -93,6 +97,7 @@ class DDGameAPISeeder extends \Seeder {
 				"cml" => "{{url}}",
 				"format" => "text",
 				"css" => "",
+				"js" => "",
 				"version" => 0,
 				"type" => "Colony tagging Template",
 				"game_type" => "CellEx",
@@ -106,6 +111,7 @@ class DDGameAPISeeder extends \Seeder {
 				],
 				"platform" => "DrDetectiveGamingPlatform",
 				"user_id" => "carlosm",
+				"instructions" => ""
 		]);
 		
 		$this->createTemplate([
@@ -113,6 +119,7 @@ class DDGameAPISeeder extends \Seeder {
 				"cml" => "{{url}}",
 				"format" => "text",
 				"css" => "",
+				"js" => "",
 				"version" => 0,
 				"type" => "Vesicle locating Template",
 				"game_type" => "VesEx",
@@ -124,9 +131,15 @@ class DDGameAPISeeder extends \Seeder {
 				],
 				"platform" => "DrDetectiveGamingPlatform",
 				"user_id" => "carlosm",
+				"instructions" => ""
 		]);
 	}
 	
+	/**
+	 * Create seed templates.
+	 * 
+	 * @param $templateArray
+	 */
 	private function createTemplate($templateArray) {
 		$template = Template::find($templateArray['_id']);
 		if( is_null($template) ) {
