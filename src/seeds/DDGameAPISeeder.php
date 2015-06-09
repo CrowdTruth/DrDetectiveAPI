@@ -62,76 +62,84 @@ class DDGameAPISeeder extends \Seeder {
 			],
 			"platform" => "DrDetectiveGamingPlatform",
 			"user_id" => "carlosm",
-			"instructions" => ""
+			"instructions" => "",
+			"level" => 1,
+			"score" => 10
+		] );
+		
+		$this->createTemplate ( [ 
+			"_id" => "template/drdetective/2",
+			"cml" => "{{url}}",
+			"format" => "text",
+			"css" => "",
+			"js" => "",
+			"version" => 0,
+			"type" => "Nucleus tagging Template",
+			"game_type" => "CellEx",
+			"extraInfo" => [ 
+				"label" => "Mark each nucleus by clicking it or drawing a shape around it",
+				"label1" => "I have annotated all nuclei ",
+				"label2" => "There were too many nuclei to annotate",
+				"label3" => "No nuclei visible",
+				"label4" => "Other",
+				"label5" => "Enter the total number of nuclei here:",
+				"label6" => "Good",
+				"label7" => "Medium",
+				"label8" => "Poor",
+				"label9" => "Blank (Black) Image",
+				"label10" => "No Image" 
+			],
+			"platform" => "DrDetectiveGamingPlatform",
+			"user_id" => "carlosm",
+			"instructions" => "",
+			"level" => 1,
+			"score" => 10
 		]);
 		
 		$this->createTemplate([
-				"_id" => "template/drdetective/2",
-				"cml" => "{{url}}",
-				"format" => "text",
-				"css" => "",
-				"js" => "",
-				"version" => 0,
-				"type" => "Nucleus tagging Template",
-				"game_type" => "CellEx",
-				"extraInfo" => [
-					"label" => "Mark each nucleus by clicking it or drawing a shape around it",
-					"label1" => "I have annotated all nuclei ",
-					"label2" => "There were too many nuclei to annotate",
-					"label3" => "No nuclei visible",
-					"label4" => "Other",
-					"label5" => "Enter the total number of nuclei here:",
-					"label6" => "Good",
-					"label7" => "Medium",
-					"label8" => "Poor",
-					"label9" => "Blank (Black) Image",
-					"label10" => "No Image"
-				],
-				"platform" => "DrDetectiveGamingPlatform",
-				"user_id" => "carlosm",
-				"instructions" => ""
+			"_id" => "template/drdetective/3",
+			"cml" => "{{url}}",
+			"format" => "text",
+			"css" => "",
+			"js" => "",
+			"version" => 0,
+			"type" => "Colony tagging Template",
+			"game_type" => "CellEx",
+			"extraInfo" => [
+				"label" => "Mark each colony by clicking it or drawing a shape around it",
+				"label1" => "I have annotated all colonies ",
+				"label2" => "There were too many colonies to annotate",
+				"label3" => "No colonies visible",
+				"label4" => "Other",
+				"label5" => "Enter the total number of colonies here:"
+			],
+			"platform" => "DrDetectiveGamingPlatform",
+			"user_id" => "carlosm",
+			"instructions" => "",
+			"level" => 2,
+			"score" => 10
 		]);
 		
 		$this->createTemplate([
-				"_id" => "template/drdetective/3",
-				"cml" => "{{url}}",
-				"format" => "text",
-				"css" => "",
-				"js" => "",
-				"version" => 0,
-				"type" => "Colony tagging Template",
-				"game_type" => "CellEx",
-				"extraInfo" => [
-					"label" => "Mark each colony by clicking it or drawing a shape around it",
-					"label1" => "I have annotated all colonies ",
-					"label2" => "There were too many colonies to annotate",
-					"label3" => "No colonies visible",
-					"label4" => "Other",
-					"label5" => "Enter the total number of colonies here:"
-				],
-				"platform" => "DrDetectiveGamingPlatform",
-				"user_id" => "carlosm",
-				"instructions" => ""
-		]);
-		
-		$this->createTemplate([
-				"_id" => "template/drdetective/4",
-				"cml" => "{{url}}",
-				"format" => "text",
-				"css" => "",
-				"js" => "",
-				"version" => 0,
-				"type" => "Vesicle locating Template",
-				"game_type" => "VesEx",
-				"extraInfo" => [
-					"label" => "There are no vesicles in this image",
-					"label1" => "The vesicles are equally distributed",
-					"label2" => "The vesicles are near the tip",
-					"label3" => "The vesicles are near the nucleus"
-				],
-				"platform" => "DrDetectiveGamingPlatform",
-				"user_id" => "carlosm",
-				"instructions" => ""
+			"_id" => "template/drdetective/4",
+			"cml" => "{{url}}",
+			"format" => "text",
+			"css" => "",
+			"js" => "",
+			"version" => 0,
+			"type" => "Vesicle locating Template",
+			"game_type" => "VesEx",
+			"extraInfo" => [
+				"label" => "There are no vesicles in this image",
+				"label1" => "The vesicles are equally distributed",
+				"label2" => "The vesicles are near the tip",
+				"label3" => "The vesicles are near the nucleus"
+			],
+			"platform" => "DrDetectiveGamingPlatform",
+			"user_id" => "carlosm",
+			"instructions" => "",
+			"level" => 2,
+			"score" => 10
 		]);
 	}
 	
