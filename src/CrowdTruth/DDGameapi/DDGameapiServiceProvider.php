@@ -25,6 +25,10 @@ class DdgameapiServiceProvider extends ServiceProvider {
 	{
 		$this->package('crowdtruth/ddgameapi');
 		include __DIR__.'/../../routes.php';
+		
+		$this->app->bind ( 'DrDetectiveGamingPlatform', function () {
+			return new DrDetectiveJobController();
+		} );
 	}
 
 	/**
