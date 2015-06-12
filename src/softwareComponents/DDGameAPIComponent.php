@@ -35,7 +35,7 @@ class DDGameAPIComponent {
 		
 		$activity = new Activity();
 		$activity->softwareAgent_id = $this->softwareComponent->_id;
-		// $activity->save();
+		$activity->save();
 		
 		// TODO: questions: with which doctype?
 		$docType = 'gamejudgment';
