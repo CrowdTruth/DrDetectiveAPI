@@ -39,9 +39,13 @@ class DDGameAPIController extends \Controller {
 				return $this->buildResponse($signal, 'error', 'Signature does not match');
 			}
 			
-			$nJudgments = $this->swcomponent->store($payload);
+			$resp = $this->swcomponent->store($payload);
+			if($resp['status']=='ok') {
+				return $this->buildResponse($signal, 'ok', strval($resp['nEntities']).' processed');
+			} else {
+				return $this->buildResponse($signal, 'error', $resp['message']);
+			}
 			
-			return $this->buildResponse($signal, 'ok', strval($nJudgments['nEntities']).' processed');
 		} else {
 			return $this->buildResponse($signal, 'error', 'Unknown signal');
 		}

@@ -35,11 +35,9 @@ class DDGameAPIComponent {
 		
 		$activity = new Activity();
 		$activity->softwareAgent_id = $this->softwareComponent->_id;
-		$activity->save();
+		// $activity->save();
 		
-		// TODO: questions: who should own entities? on which project? with which doctype?
-		$ctUser = 'carlosm';
-		$project = 'nlesc';
+		// TODO: questions: with which doctype?
 		$docType = 'gamejudgment';
 		$seqName = 'entity/gamejudgment';
 		
@@ -47,13 +45,10 @@ class DDGameAPIComponent {
 		foreach ($entities as $key => &$entity) {
 			$entity['_id'] = $seqName.'/'.$entity['judgment_id'];
 			$entity['activity_id'] = $activity->_id;
-			$entity['project'] = $project;
 			$entity['documentType'] = $docType;
 			
-			$entity['gameuser_id'] = $entity['user_id'];
-			$entity['user_id'] = $ctUser;
-			
 			// Reorganize data in entity
+			$entity['gameuser_id'] = $entity['user_id'];
 			$entity['content'] = [
 				'task_data' => $entity['task_data'],
 				'response'  => $entity['response'],
@@ -62,11 +57,21 @@ class DDGameAPIComponent {
 			unset($entity['response']);
 			unset($entity['judgment_id']);
 			
+			// Maybe job should be cached if same game_id as previous loop ?
+			// TODO: validate empty jobs (although shouldn't happen)
+			$job = \Job::where('platformJobId', intval($entity['game_id']))
+				->where('softwareAgent_id', 'DrDetectiveGamingPlatform')->get()->first();
+			
+			$entity['project'] = $job->project;
+			$entity['user_id'] = $job->user_id;
+			$entity['jobParents'] = [ $job->_id ];
+			
 			$entity['hash'] = md5(serialize($entity['content']));
 			if(Entity::where('_id', $entity['_id'])->exists()) {
 				unset($entities[$key]);
 			}
 		}
+		
 		if(count($entities)>0) {
 			\DB::collection('entities')->insert($entities);
 		}
