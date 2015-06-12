@@ -40,7 +40,7 @@ class DrDetectiveJobController extends \FrameWork {
 	public function publishJob($job, $sandbox) {
 		// TODO: make API URL configurable
 		$client = new \GuzzleHttp\Client();
-		$apiURL = 'http://localhost:8080/admin-games/api';
+		$apiURL = \Config::get('ddgameapi::URL');
 		
 		$template = Template::where('_id', '=', $job->jobConfiguration->content['template_id'])->first();
 		

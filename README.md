@@ -42,6 +42,23 @@ Run the package migrations to add the required software components to the CrowdT
 ```
 [CrowdTruth]$ php artisan db:seed --class="CrowdTruth\DDGameapi\DDGameAPISeeder"
 ```
+
+Next, package needs to be configured to communicate with the Dr. Detective game. For this, you must first export the configuration file:
+
+```
+[CrowdTruth]$ php artisan config:publish crowdtruth/ddgameapi
+```
+
+and afterwards edit the URL field on the configuration file *app/config/packages/crowdtruth/ddgameapi/config.php*:
+
+```
+return array(
+	'URL' => 'http://<your-game-url>/admin-games/api',
+);
+```
+
+set the URL to the location where your game instance is installed, for example *http://localhost:8080/admin-games/api*.
+
 If everything went well, the API has been succesfully installed.
 
 ## API description
