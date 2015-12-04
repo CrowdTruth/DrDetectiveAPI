@@ -63,7 +63,7 @@ If everything went well, the API has been succesfully installed.
 
 ## API description
 
-The API enables a webhook on the following URL: 'http://<your-CrowdTruth-instance>/game/detective/'. This webhook is called from Dr. Detective to send judgments to CrowdTruth. API requests must contain 3 elements (in a JSON structure)
+The API enables a webhook on the following URL: *http://\<your-CrowdTruth-instance\>/game/detective/*. This webhook is called from Dr. Detective to send judgments to CrowdTruth. API requests must contain 3 elements (in a JSON structure)
 
  - *signal* -- Signal to be processed. 'new_judgments' for new judgments
  - *payload* -- a JSON structure with the judgments
