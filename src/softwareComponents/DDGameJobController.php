@@ -1,7 +1,7 @@
 <?php
 namespace CrowdTruth\DDGameapi;
 
-use \MongoDB\Template as Template;
+use \Template as Template;
 
 // SEE CrowdTruth\Crowdflower\crowdflower2.php for more info
 class DrDetectiveJobController extends \FrameWork {

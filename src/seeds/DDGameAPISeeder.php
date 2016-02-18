@@ -1,8 +1,8 @@
 <?php
 namespace CrowdTruth\DDGameapi;
 
-use \MongoDB\SoftwareComponent as SoftwareComponent;
-use \MongoDB\Template as Template;
+use \SoftwareComponent as SoftwareComponent;
+use \Template as Template;
 
 /**
  * Create required objects in database, if they do not exist already.

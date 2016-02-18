@@ -1,9 +1,9 @@
 <?php
 namespace CrowdTruth\DDGameapi;
 
-use \MongoDB\Entity as Entity;
-use \MongoDB\Activity as Activity;
-use \MongoDB\SoftwareComponent as SoftwareComponent;
+use \Entity as Entity;
+use \Activity as Activity;
+use \SoftwareComponent as SoftwareComponent;
 use \MongoDate as MongoDate;
 
 
