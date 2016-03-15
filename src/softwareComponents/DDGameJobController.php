@@ -69,7 +69,10 @@ class DrDetectiveJobController extends \FrameWork {
 			'gameType' => $template->game_type,
 			'level' => $template->level,
 			'name' => $job->jobConfiguration->content['title'],
-			'instructions' => $job->jobConfiguration->content['description'],
+			'tag' => $template->tag,
+			'instructions' => $template->instructions,
+			'examples' => $template->examples,
+			'steps' => $template->steps,
 			'extraInfo' => $template->extraInfo,
 			'score' => $template->score,
 			'taskData' => $taskData
