@@ -48,11 +48,11 @@ class DDGameAPISeeder extends \Seeder {
 			"type" => "Cell Tagging Template",
 			"game_type" => "CellEx",
 			"tag" => "Cell Seeker",
-			"instructions" => "test",
-				//.'<p>You are given 3 microscopic images of one or more human cells. You will be identifying the cells in the images. Don\'t worry, it\'s easier than you think. Take a look at these examples. <button id="openExamplesButton" class="openExamples" style="margin-top: 50px; margin-bottom:50px;">Show detailed instructions</button></p>'
-				//.'',
-			"examples" => "test2",
-				/*.'<div style="background-color:#6495ed; padding: 0px 20px 10px 20px;">'
+			"instructions" => ""
+				.'<p>You are given 3 microscopic images of one or more human cells. You will be identifying the cells in the images. Don\'t worry, it\'s easier than you think. Take a look at these examples. <button id="openExamplesButton" class="openExamples" style="margin-top: 50px; margin-bottom:50px;">Show detailed instructions</button></p>'
+				.'',
+			"examples" => ""
+				.'<div style="background-color:#6495ed; padding: 0px 20px 10px 20px;">'
 				.'<div style="font-size: 20pt; color:#000;">Examples:</div>'
 				.'</p>'
 				.'<div style="background-color:#FFF; border:1px solid #000; padding:10px;">'
@@ -67,9 +67,9 @@ class DDGameAPISeeder extends \Seeder {
 				.'<img width="100%" src="img/CellTagging_Green.png">'
 				.'</div>'
 				.'</div>'
-				.'',*/
-			"steps" => "test3",
-				/*.'<div style="font-size: 20pt; color:#000;">Cell identification steps</div>'
+				.'',
+			"steps" => ""
+				.'<div style="font-size: 20pt; color:#000;">Cell identification steps</div>'
 				.'<p>Step 1: Click near the center of al visible cells or drag the mouse to draw a box around the cells. Keep a mental count while you are tagging. </p>'
 				.'<p>Step 2: Choose the option from the given list which best describes your cell markings. </p>'
 				.'<p>Step 3: Report the number of cells you have counted in the designated field. </p>'
@@ -87,7 +87,7 @@ class DDGameAPISeeder extends \Seeder {
 				.'<li>Once you are happy with the result, click the "Next question" button. </li>'
 				.'</ul></div>'
 				.'</div>'
-				.'',*/
+				.'',
 			"extraInfo" => [
 				"label" => "Mark each cell by clicking it or drawing a shape around it",
 				"label1" => "I have annotated all cells",
@@ -102,7 +102,6 @@ class DDGameAPISeeder extends \Seeder {
 			],
 			"platform" => "DrDetectiveGamingPlatform",
 			"user_id" => "carlosm",
-			"instructions" => "",
 			"level" => 1,
 			"score" => 10
 		] );
@@ -117,11 +116,11 @@ class DDGameAPISeeder extends \Seeder {
 			"type" => "Nucleus tagging Template",
 			"game_type" => "CellEx",
 			"tag" => "Nucly",
-			"instructions" => "test",
-				//.'<p>You are given 3 microscopic images of one or more human cells. You will be identifying the nuclei in the images. Don\'t worry, it\'s easier than you think. Take a look at these examples. <button id="openExamplesButton" class="openExamples" style="margin-top: 50px; margin-bottom:50px;">Show detailed instructions</button></p>'
-				//.'',
-			"examples" => "test2",
-			/*	.'<div style="background-color:#6495ed; padding: 0px 20px 10px 20px;">'
+			"instructions" => ""
+				.'<p>You are given 3 microscopic images of one or more human cells. You will be identifying the nuclei in the images. Don\'t worry, it\'s easier than you think. Take a look at these examples. <button id="openExamplesButton" class="openExamples" style="margin-top: 50px; margin-bottom:50px;">Show detailed instructions</button></p>'
+				.'',
+			"examples" => ""
+				.'<div style="background-color:#6495ed; padding: 0px 20px 10px 20px;">'
 				.'<div style="font-size: 20pt; color:#000;">Examples:</div>'
 				.'</p>'
 				.'<div style="background-color:#FFF; border:1px solid #000; padding:10px;">'
@@ -137,9 +136,9 @@ class DDGameAPISeeder extends \Seeder {
 				.'<img width="100%" src="img/NucleusTagging_Green.png">'
 				.'</div>'
 				.'</div>'
-				.'',*/
-			"steps" => "test3",
-			/*	.'<div style="font-size: 20pt; color:#000;">Nuclei identification steps</div>'
+				.'',
+			"steps" => ""
+				.'<div style="font-size: 20pt; color:#000;">Nuclei identification steps</div>'
 				.'<p>Step 1: Click near the center of al visible nuclei or drag the mouse to draw a box around the nuclei. Keep a mental count while you are tagging. </p>'
 				.'<p>Step 2: Choose the option from the given list which best describes your nuclei markings. </p>'
 				.'<p>Step 3: Report the number of nuclei you have counted in the designated field. </p>'
@@ -157,7 +156,7 @@ class DDGameAPISeeder extends \Seeder {
 				.'<li>Once you are happy with the result, click the "Next question" button. </li>'
 				.'</ul></div>'
 				.'</div>'
-				.'',*/
+				.'',
 			"extraInfo" => [ 
 				"label" => "Mark each nucleus by clicking it or drawing a shape around it",
 				"label1" => "I have annotated all nuclei ",
@@ -172,7 +171,6 @@ class DDGameAPISeeder extends \Seeder {
 			],
 			"platform" => "DrDetectiveGamingPlatform",
 			"user_id" => "carlosm",
-			"instructions" => "",
 			"level" => 2,
 			"score" => 20
 		]);
@@ -187,11 +185,11 @@ class DDGameAPISeeder extends \Seeder {
 			"type" => "Colony tagging Template",
 			"game_type" => "CellEx",
 			"tag" => "Colony Catcher",
-			"instructions" => "test",
-			//	.'<p>You are given 3 microscopic images of one or more colonies. You will be identifying the colonies in the images. Don\'t worry, it\'s easier than you think. Take a look at these examples. <button id="openExamplesButton" class="openExamples" style="margin-top: 50px; margin-bottom:50px;">Show detailed instructions</button></p>'
-			//	.'',
-			"examples" => "test2",
-			/*	.'<div style="background-color:#6495ed; padding: 0px 20px 10px 20px;">'
+			"instructions" => ""
+				.'<p>You are given 3 microscopic images of one or more colonies. You will be identifying the colonies in the images. Don\'t worry, it\'s easier than you think. Take a look at these examples. <button id="openExamplesButton" class="openExamples" style="margin-top: 50px; margin-bottom:50px;">Show detailed instructions</button></p>'
+				.'',
+			"examples" => ""
+				.'<div style="background-color:#6495ed; padding: 0px 20px 10px 20px;">'
 				.'<div style="font-size: 20pt; color:#000;">Examples:</div>'
 				.'</p>'
 				.'<div style="background-color:#FFF; border:1px solid #000; padding:10px;">'
@@ -208,9 +206,9 @@ class DDGameAPISeeder extends \Seeder {
 				.'<img width="100%" src="img/ColonyTagging_Mixed.png">'
 				.'</div>'
 				.'</div>'
-				.'',*/
-			"steps" => "test3",
-			/*	.'<div style="font-size: 20pt; color:#000;">Colony identification steps</div>'
+				.'',
+			"steps" => ""
+				.'<div style="font-size: 20pt; color:#000;">Colony identification steps</div>'
 				.'<p>Step 1: Click near the center of al visible colonies or drag the mouse to draw a box around the colonies. Keep a mental count while you are tagging. </p>'
 				.'<p>Step 2: Choose the option from the given list which best describes your colony markings. </p>'
 				.'<p>Step 3: Report the number of colonies you have counted in the designated field. </p>'
@@ -228,7 +226,7 @@ class DDGameAPISeeder extends \Seeder {
 				.'<li>Once you are happy with the result, click the "Next question" button. </li>'
 				.'</ul></div>'
 				.'</div>'
-				.'',*/
+				.'',
 			"extraInfo" => [
 				"label" => "Mark each colony by clicking it or drawing a shape around it",
 				"label1" => "I have annotated all colonies ",
@@ -243,7 +241,6 @@ class DDGameAPISeeder extends \Seeder {
 			],
 			"platform" => "DrDetectiveGamingPlatform",
 			"user_id" => "carlosm",
-			"instructions" => "",
 			"level" => 3,
 			"score" => 30
 		]);
@@ -258,11 +255,11 @@ class DDGameAPISeeder extends \Seeder {
 			"type" => "Vesicle locating Template",
 			"game_type" => "VesEx",
 			"tag" => "Vesicle Adventure",
-			"instructions" => "test",
-			//	.'<p>You are given 3 microscopic images of one or more human cells. You will be identifying the vesicles in the images. Don\'t worry, it\'s easier than you think. Take a look at these examples. <button id="openExamplesButton" class="openExamples" style="margin-top: 50px; margin-bottom:50px;">Show detailed instructions</button></p>'
-			//	.'',
-			"examples" => "test2",
-			/*	.'<div style="background-color:#6495ed; padding: 0px 20px 10px 20px;">'
+			"instructions" => ""
+				.'<p>You are given 3 microscopic images of one or more human cells. You will be identifying the vesicles in the images. Don\'t worry, it\'s easier than you think. Take a look at these examples. <button id="openExamplesButton" class="openExamples" style="margin-top: 50px; margin-bottom:50px;">Show detailed instructions</button></p>'
+				.'',
+			"examples" => ""
+				.'<div style="background-color:#6495ed; padding: 0px 20px 10px 20px;">'
 				.'<div style="font-size: 20pt; color:#000;">Examples:</div>'
 				.'</p>'
 				.'<div style="background-color:#FFF; border:1px solid #000; padding:10px;">'
@@ -276,9 +273,9 @@ class DDGameAPISeeder extends \Seeder {
 				.'<img width="100%" src="img/Vesicle_Locating_Mixed.png">'
 				.'</div>'
 				.'</div>'
-				.'',*/
-			"steps" => "test3",
-			/*	.'<div style="font-size: 20pt; color:#000;">Vesicle identification steps</div>'
+				.'',
+			"steps" => ""
+				.'<div style="font-size: 20pt; color:#000;">Vesicle identification steps</div>'
 				.'<p>Step 1: First, take a look at the image and click on the icon which best describes the behavior of the vesicles.</p>'
 				.'<ul>'
 				.'<li>Vesicles can be seen as tiny dots present throughout (a part of) the cell.</li>'
@@ -289,7 +286,7 @@ class DDGameAPISeeder extends \Seeder {
 				.'</ul>'
 				.'<p>Step 2: Choose the option from the given list which best describes your vesicle location classification.</p>'
 				.'<p>Step 3: Click the button which best describes the given image quality. </p>'
-				.'',*/
+				.'',
 			"extraInfo" => [
 				"label" => "Click on the icon below which best describes the VESICLE location",
 				"label1" => "Side Nucleus",
@@ -303,7 +300,6 @@ class DDGameAPISeeder extends \Seeder {
 			],
 			"platform" => "DrDetectiveGamingPlatform",
 			"user_id" => "carlosm",
-			"instructions" => "",
 			"level" => 1,
 			"score" => 10
 		]);
