@@ -75,6 +75,7 @@ class DrDetectiveJobController extends \FrameWork {
 			'steps' => $template->steps,
 			'extraInfo' => $template->extraInfo,
 			'score' => $template->score,
+			'description' => $job->jobConfiguration->content['description'],
 			'taskData' => $taskData
 		];
 		
