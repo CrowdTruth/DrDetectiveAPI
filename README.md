@@ -59,7 +59,7 @@ return array(
 
 set the URL to the location where your game instance is installed, for example *http://localhost:8080/admin-games/api*.
 
-Last but not least, go to the instructions for installing this api specific to your game instance. For example https://github.com/CrowdTruth/BioCrowd/wiki/Configurations-for-using-the-DrDetectiveAPI
+Last but not least, go to the instructions for configuring this API specific to your game instance. For example https://github.com/CrowdTruth/BioCrowd/wiki/Configurations-for-using-the-DrDetectiveAPI
 
 If everything went well, the API has been succesfully installed.
 
