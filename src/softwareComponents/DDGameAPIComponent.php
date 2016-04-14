@@ -59,7 +59,7 @@ class DDGameAPIComponent {
 			
 			// Maybe job should be cached if same game_id as previous loop ?
 			// TODO: validate empty jobs (although shouldn't happen)
-			$job = \Job::where('platformJobId', intval($entity['game_id']))
+			$job = \Entities\Job::where('platformJobId', intval($entity['game_id']))
 				->where('softwareAgent_id', 'DrDetectiveGamingPlatform')->get()->first();
 			
 			$entity['project'] = $job->project;
