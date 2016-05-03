@@ -83,7 +83,7 @@ class DDGameAPIComponent {
 				$workerunit->crowdAgent_id = $agentId;
 				$workerunit->platformWorkerunitId = $annId;
 				$workerunit->submitTime = $submitTime;
-				$workerunit->documentType = 'gamejudgment'
+				$workerunit->documentType = 'gamejudgment';
 				$workerunit->softwareAgent_id = 'biocrowd';
 
 				// Maybe job should be cached if same game_id as previous loop ?
