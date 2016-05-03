@@ -1,7 +1,8 @@
 <?php
 namespace CrowdTruth\DDGameapi;
 
-use \Entity as Entity;
+use \Entities\WorkerUnit as WorkerUnit;
+use \Entities\Job as Job;
 use \Activity as Activity;
 use \SoftwareComponent as SoftwareComponent;
 use \MongoDate as MongoDate;
@@ -43,37 +44,58 @@ class DDGameAPIComponent {
 		
 		// The '&' in '&$entity' means we modify the array directly
 		foreach ($entities as $key => &$entity) {
-			$entity['_id'] = $seqName.'/'.$entity['judgment_id'];
-			$entity['activity_id'] = $activity->_id;
-			$entity['documentType'] = $docType;
-			
-			// Reorganize data in entity
-			$entity['gameuser_id'] = $entity['user_id'];
-			$entity['content'] = [
-				'task_data' => $entity['task_data'],
-				'response'  => $entity['response'],
-			];
-			unset($entity['task_data']);
-			unset($entity['response']);
-			unset($entity['judgment_id']);
-			
-			// Maybe job should be cached if same game_id as previous loop ?
-			// TODO: validate empty jobs (although shouldn't happen)
-			$job = \Entities\Job::where('platformJobId', intval($entity['game_id']))
-				->where('softwareAgent_id', 'DrDetectiveGamingPlatform')->get()->first();
-			
-			$entity['project'] = $job->project;
-			$entity['user_id'] = $job->user_id;
-			$entity['jobParents'] = [ $job->_id ];
-			
-			$entity['hash'] = md5(serialize($entity['content']));
-			if(Entity::where('_id', $entity['_id'])->exists()) {
-				unset($entities[$key]);
+
+
+
+			$agent = CrowdAgent::where('_id', "crowdagent/biocrowd/" . $entity['user_id'])->first();
+			if($agent) {
+				// do not delete this on rollback
+				if(!array_key_exists($agent->_id, $this->crowdAgents)) {
+					$agent->_existing = true;			
+				}
+			} else {
+				$agent = new CrowdAgent;
+				$agent->_id= "crowdagent/biocrowd/" . $entity['user_id'];
+				$agent->softwareAgent_id= 'biocrowd';
+				$agent->platformAgentId = $entity['user_id'];
+				$agent->save();
 			}
-		}
-		
-		if(count($entities)>0) {
-			\DB::collection('entities')->insert($entities);
+
+
+			$workerunit = \Entities\Workerunit::where('platformWorkerUnitId', $entity['judgment_id'])->first();
+			if($workerunit) {
+				// do not delete this on rollback
+				if(!array_key_exists($workerunit->_id, $this->workerUnits)) {
+					$workerunit->_existing = true;
+					$this->workerUnits[$workerunit->_id] = $workerunit;
+				}
+			} else {
+				$workerunit = new Workerunit;
+				$workerunit->activity_id = $activity->_id;
+				//$workerunit->unit_id = $unitId;
+				//$workerunit->acceptTime = $acceptTime;
+				//$workerunit->cfChannel = $channel;
+				//$workerunit->cfTrust = $trust;
+				$workerunit->content = [
+					'task_data' => $entity['task_data'],
+					'response'  => $entity['response']
+				];
+				$workerunit->crowdAgent_id = $agentId;
+				$workerunit->platformWorkerunitId = $annId;
+				$workerunit->submitTime = $submitTime;
+				$workerunit->documentType = 'gamejudgment'
+				$workerunit->softwareAgent_id = 'biocrowd';
+
+				// Maybe job should be cached if same game_id as previous loop ?
+				// TODO: validate empty jobs (although shouldn't happen)
+				$job = Job::where('platformJobId', intval($entity['game_id']))
+				->where('softwareAgent_id', 'DrDetectiveGamingPlatform')->get()->first();
+				$workerunit->job_id = $job->_id;
+				$workerunit->project = $job->project;
+
+				\Queue::push('Queues\SaveWorkerunit', array('workerunit' => serialize($workerunit)));		
+				
+			}
 		}
 		
 		return [
