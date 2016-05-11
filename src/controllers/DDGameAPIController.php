@@ -34,10 +34,10 @@ class DDGameAPIController extends \Controller {
 		
 		if($signal=='new_judgments') {
 			// Signature should be SHA1 of payload
-			$signCheck = sha1(print_r($payload, true));
+			/*$signCheck = sha1(print_r($payload, true));
 			if($signCheck!=$signature) {
 				return $this->buildResponse($signal, 'error', 'Signature does not match. Signature: '.$signature.'. SignCheck: '.$signCheck);
-			}
+			}*/
 			
 			$resp = $this->swcomponent->store($payload);
 			if($resp['status']=='ok') {
