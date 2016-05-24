@@ -54,7 +54,7 @@ class DDGameAPIComponent {
 				// do not delete this on rollback
 				if(!array_key_exists($agent->_id, $crowdAgents)) {
 					$agent->_existing = true;
-					$crowdAgents[$agent->_id] = $agent;
+					//$crowdAgents[$agent->_id] = $agent;
 				}
 			} else {
 				$agent = new CrowdAgent;
@@ -73,7 +73,7 @@ class DDGameAPIComponent {
 				if(!array_key_exists($workerunit->_id, $workerUnits)) {
 					$workerunit->_existing = true;
 					$this->workerUnits[$workerunit->_id] = $workerunit;
-					$workerUnits[$workerunit->_id] = $workerunit;
+					//$workerUnits[$workerunit->_id] = $workerunit;
 				}
 			} else {
 				$workerunit = new Workerunit;
@@ -86,7 +86,7 @@ class DDGameAPIComponent {
 					'task_data' => $entity['task_data'],
 					'response'  => $entity['response']
 				];
-				$workerunit->crowdAgent_id = $agentId;
+				$workerunit->crowdAgent_id = $agent->_id;
 				$workerunit->platformWorkerunitId = $annId;
 				$workerunit->submitTime = $submitTime;
 				$workerunit->documentType = 'gamejudgment';
