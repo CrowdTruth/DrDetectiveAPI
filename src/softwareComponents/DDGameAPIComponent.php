@@ -46,13 +46,13 @@ class DDGameAPIComponent {
 		// The '&' in '&$entity' means we modify the array directly
 		foreach ($entities as $key => &$entity) {
 
-
+			$crowdAgents = [];
+			$workerUnits = [];
 
 			$agent = CrowdAgent::where('_id', "crowdagent/biocrowd/" . $entity['user_id'])->first();
 			if($agent) {
-				error_log(print_r($this));
 				// do not delete this on rollback
-				if(!array_key_exists($agent->_id, $this->crowdAgents)) {
+				if(!array_key_exists($agent->_id, $crowdAgents)) {
 					$agent->_existing = true;
 				}
 			} else {
@@ -61,13 +61,15 @@ class DDGameAPIComponent {
 				$agent->softwareAgent_id= 'biocrowd';
 				$agent->platformAgentId = $entity['user_id'];
 				$agent->save();
+				
+				$crowdAgents[$agent->_id] = $agent;
 			}
 
 
 			$workerunit = \Entities\Workerunit::where('platformWorkerUnitId', $entity['judgment_id'])->first();
 			if($workerunit) {
 				// do not delete this on rollback
-				if(!array_key_exists($workerunit->_id, $this->workerUnits)) {
+				if(!array_key_exists($workerunit->_id, $workerUnits)) {
 					$workerunit->_existing = true;
 					$this->workerUnits[$workerunit->_id] = $workerunit;
 				}
@@ -95,6 +97,7 @@ class DDGameAPIComponent {
 				$workerunit->job_id = $job->_id;
 				$workerunit->project = $job->project;
 
+				$workerUnits[$workerunit->_id] = $workerunit;
 				\Queue::push('Queues\SaveWorkerunit', array('workerunit' => serialize($workerunit)));		
 				
 			}
