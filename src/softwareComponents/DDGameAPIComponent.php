@@ -87,8 +87,8 @@ class DDGameAPIComponent {
 					'response'  => $entity['response']
 				];
 				$workerunit->crowdAgent_id = $agent->_id;
-				$workerunit->platformWorkerunitId = $annId;
-				$workerunit->submitTime = $submitTime;
+				//$workerunit->platformWorkerunitId = $annId;
+				//$workerunit->submitTime = $submitTime;
 				$workerunit->documentType = 'gamejudgment';
 				$workerunit->softwareAgent_id = 'biocrowd';
 
