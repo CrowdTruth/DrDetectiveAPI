@@ -50,7 +50,7 @@ class DDGameAPIComponent {
 
 			$agent = CrowdAgent::where('_id', "crowdagent/biocrowd/" . $entity['user_id'])->first();
 			if($agent) {
-				error_log($this);
+				error_log(print_r($this));
 				// do not delete this on rollback
 				if(!array_key_exists($agent->_id, $this->crowdAgents)) {
 					$agent->_existing = true;
