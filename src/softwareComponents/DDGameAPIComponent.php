@@ -54,6 +54,7 @@ class DDGameAPIComponent {
 				// do not delete this on rollback
 				if(!array_key_exists($agent->_id, $crowdAgents)) {
 					$agent->_existing = true;
+					$crowdAgents[$agent->_id] = $agent;
 				}
 			} else {
 				$agent = new CrowdAgent;
@@ -72,6 +73,7 @@ class DDGameAPIComponent {
 				if(!array_key_exists($workerunit->_id, $workerUnits)) {
 					$workerunit->_existing = true;
 					$this->workerUnits[$workerunit->_id] = $workerunit;
+					$workerUnits[$workerunit->_id] = $workerunit;
 				}
 			} else {
 				$workerunit = new Workerunit;
