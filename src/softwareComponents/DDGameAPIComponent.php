@@ -6,6 +6,7 @@ use \Entities\Job as Job;
 use \Activity as Activity;
 use \SoftwareComponent as SoftwareComponent;
 use \MongoDate as MongoDate;
+use \CrowdAgent as CrowdAgent;
 
 
 /**
