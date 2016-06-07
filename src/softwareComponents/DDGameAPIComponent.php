@@ -95,9 +95,9 @@ class DDGameAPIComponent {
 				$vesExGameTypeId = GameType::where('name', 'VesEx')->first()->get()->id;
 				$jugementGameTypeId = Game::where('id',$entity['game_id'])->first()->get()->game_type_id;
 				if($jugementGameTypeId = $cellExGameTypeId){
-					$workerunit->documentType = 'gameImageTaggingJudgment';
+					$workerunit->templateType = 'gameImageTaggingJudgment';
 				} else if($jugementGameTypeId = $vesExGameTypeId){
-					$workerunit->documentType = 'gameVesicleLocatingJudgment';
+					$workerunit->templateType = 'gameVesicleLocatingJudgment';
 				}
 				$workerunit->softwareAgent_id = 'biocrowd';
 
