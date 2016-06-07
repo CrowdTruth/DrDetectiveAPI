@@ -89,7 +89,16 @@ class DDGameAPIComponent {
 				$workerunit->crowdAgent_id = $agent->_id;
 				//$workerunit->platformWorkerunitId = $annId;
 				//$workerunit->submitTime = $submitTime;
-				$workerunit->documentType = 'gamejudgment';
+				
+				//if the game type is CellEx, use gameImageTaggingJudgment. 
+				$cellExGameTypeId = GameType::where('name', 'CellEx')->first()->get()->id;
+				$vesExGameTypeId = GameType::where('name', 'VesEx')->first()->get()->id;
+				$jugementGameTypeId = Game::where('id',$entity['game_id'])->first()->get()->game_type_id;
+				if($jugementGameTypeId = $cellExGameTypeId){
+					$workerunit->documentType = 'gameImageTaggingJudgment';
+				} else if($jugementGameTypeId = $vesExGameTypeId){
+					$workerunit->documentType = 'gameVesicleLocatingJudgment';
+				}
 				$workerunit->softwareAgent_id = 'biocrowd';
 
 				// Maybe job should be cached if same game_id as previous loop ?
