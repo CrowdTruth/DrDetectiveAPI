@@ -91,10 +91,10 @@ class DDGameAPIComponent {
 				//$workerunit->submitTime = $submitTime;
 				
 				//if the game type is CellEx, use gameImageTaggingJudgment. 
-				$jugementGameTypeId = $entity['game_type_id'];
-				if($jugementGameTypeId = '1'){
+				$jugementGameTypeName = $entity['game_type_name'];
+				if($jugementGameTypeName = 'CellEx'){
 					$workerunit->templateType = 'gameImageTaggingJudgment';
-				} else if($jugementGameTypeId = '2'){
+				} else if($jugementGameTypeName = 'VesEx'){
 					$workerunit->templateType = 'gameVesicleLocatingJudgment';
 				}
 				$workerunit->softwareAgent_id = 'biocrowd';
