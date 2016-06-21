@@ -91,19 +91,17 @@ class DDGameAPIComponent {
 				//$workerunit->submitTime = $submitTime;
 				
 				//if the game type is CellEx, use gameImageTaggingJudgment. 
-				$cellExGameTypeId = \GameType::where('name', 'CellEx')->first()->get()->id;
-				$vesExGameTypeId = \GameType::where('name', 'VesEx')->first()->get()->id;
-				$jugementGameTypeId = \Game::where('id',$entity['game_id'])->first()->get()->game_type_id;
-				if($jugementGameTypeId = $cellExGameTypeId){
+				$jugementGameTypeId = $entity['game_type_id'];
+				if($jugementGameTypeId = '1'){
 					$workerunit->templateType = 'gameImageTaggingJudgment';
-				} else if($jugementGameTypeId = $vesExGameTypeId){
+				} else if($jugementGameTypeId = '2'){
 					$workerunit->templateType = 'gameVesicleLocatingJudgment';
 				}
 				$workerunit->softwareAgent_id = 'biocrowd';
 
 				// Maybe job should be cached if same game_id as previous loop ?
 				// TODO: validate empty jobs (although shouldn't happen)
-				$job = \Job::where('platformJobId', intval($entity['game_id']))
+				$job = Job::where('platformJobId', intval($entity['game_id']))
 				->where('softwareAgent_id', 'DrDetectiveGamingPlatform')->get()->first();
 				$workerunit->job_id = $job->_id;
 				$workerunit->project = $job->project;
