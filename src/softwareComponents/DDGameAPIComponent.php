@@ -87,8 +87,9 @@ class DDGameAPIComponent {
 					'response'  => $entity['response']
 				];
 				$workerunit->crowdAgent_id = $agent->_id;
-				//$workerunit->platformWorkerunitId = $annId;
-				//$workerunit->submitTime = $submitTime;
+				$workerunit->platformWorkerunitId = $entity['judgment_id'];
+				$workerunit->flag = $entity['judgment_flag'];
+				$workerunit->submitTime = $entity['updated_at'];
 				
 				//if the game type is CellEx, use gameImageTaggingJudgment. 
 				$jugementGameTypeName = $entity['game_type_name'];
