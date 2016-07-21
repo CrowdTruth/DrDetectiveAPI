@@ -67,9 +67,10 @@ class DDGameAPIComponent {
 			}
 
 
-			$workerunit = \Entities\Workerunit::where('platformWorkerUnitId', $entity['judgment_id'])->first();
+			$workerunit = \Entities\Workerunit::where('platformWorkerunitId', $entity['judgment_id'])->first();
 			if($workerunit) {
 				// do not delete this on rollback
+				// TODO: make an extra column in the judgements table that states if it was already sent to crowdtruth or not. 
 				if(!array_key_exists($workerunit->_id, $workerUnits)) {
 					$workerunit->_existing = true;
 					$this->workerUnits[$workerunit->_id] = $workerunit;
