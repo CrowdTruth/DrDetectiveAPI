@@ -60,6 +60,7 @@ class DrDetectiveJobController extends \FrameWork {
 			$taskI = [];
 			foreach($batchAssoc as $column => $alias) {
 				$taskI[$alias] = $parent['content'][$column];
+				$taskI['unit_id'] = $parent['_id'];
 			}
 			$taskData[] = $taskI;
 		}

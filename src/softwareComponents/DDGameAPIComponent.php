@@ -71,10 +71,24 @@ class DDGameAPIComponent {
 			if($workerunit) {
 				// do not delete this on rollback
 				// TODO: make an extra column in the judgements table that states if it was already sent to crowdtruth or not. 
+				// if the workerunit is not in the workerUnits array, put it in there
 				if(!array_key_exists($workerunit->_id, $workerUnits)) {
 					$workerunit->_existing = true;
 					$this->workerUnits[$workerunit->_id] = $workerunit;
 					//$workerUnits[$workerunit->_id] = $workerunit;
+				} else {
+					// if the workerunit was already in the workerUnit array (already in the CT database), update it. 
+					//$workerunit->activity_id = $activity->_id; //Should we update this?? No idea...
+					//$workerunit->unit_id = $unitId;
+					//$workerunit->acceptTime = $acceptTime;
+					//$workerunit->cfChannel = $channel;
+					//$workerunit->cfTrust = $trust;
+					$workerunit->content = [
+						'task_data' => $entity['task_data'],
+						'response'  => $entity['response']
+					];
+					$workerunit->flag = $entity['judgment_flag'];
+					$workerunit->submitTime = $entity['updated_at'];
 				}
 			} else {
 				$workerunit = new Workerunit;
@@ -91,6 +105,7 @@ class DDGameAPIComponent {
 				$workerunit->platformWorkerunitId = $entity['judgment_id'];
 				$workerunit->flag = $entity['judgment_flag'];
 				$workerunit->submitTime = $entity['updated_at'];
+				$workerunit->unit_id = $entity['unit_id'];
 				
 				//if the game type is CellEx, use gameImageTaggingJudgment. 
 				$jugementGameTypeName = $entity['game_type_name'];
@@ -109,8 +124,8 @@ class DDGameAPIComponent {
 				$workerunit->project = $job->project;
 
 				$workerUnits[$workerunit->_id] = $workerunit;
-				\Queue::push('Queues\SaveWorkerunit', array('workerunit' => serialize($workerunit)));		
 				
+				\Queue::push('Queues\SaveWorkerunit', array('workerunit' => serialize($workerunit)));
 			}
 		}
 		
