@@ -67,33 +67,34 @@ class DDGameAPIComponent {
 			}
 
 
-			$workerunit = \Entities\Workerunit::where('platformWorkerunitId', $entity['judgment_id'])->first();
+			$workerunit = \Entities\Workerunit::where('unit_id', $entity['unit_id'])->first();
 			if($workerunit) {
 				// do not delete this on rollback
 				// TODO: make an extra column in the judgements table that states if it was already sent to crowdtruth or not. 
-				// if the workerunit is not in the workerUnits array, put it in there
-				if(!array_key_exists($workerunit->_id, $workerUnits)) {
-					$workerunit->_existing = true;
-					$this->workerUnits[$workerunit->_id] = $workerunit;
-					//$workerUnits[$workerunit->_id] = $workerunit;
-				} else {
-					// if the workerunit was already in the workerUnit array (already in the CT database), update it. 
-					//$workerunit->activity_id = $activity->_id; //Should we update this?? No idea...
-					//$workerunit->unit_id = $unitId;
-					//$workerunit->acceptTime = $acceptTime;
-					//$workerunit->cfChannel = $channel;
-					//$workerunit->cfTrust = $trust;
+				// If the workerunit exists in the database, update it
+				try {
 					$workerunit->content = [
 						'task_data' => $entity['task_data'],
 						'response'  => $entity['response']
 					];
 					$workerunit->flag = $entity['judgment_flag'];
 					$workerunit->submitTime = $entity['updated_at'];
-				}
+					$workerunit->save();
+					\Log::debug("Saved workerunit {$workerunit->_id}.");
+				} catch (Exception $e) {
+					// Something went wrong with creating the Entity
+					\Log::debug("Something went wrong with creating the workerunit {$workerunit->_id}.");
+				}				
+				// if the workerunit is not in the workerUnits array, put it in there
+				if(!array_key_exists($workerunit->_id, $workerUnits)) {
+					$workerunit->_existing = true;
+					$this->workerUnits[$workerunit->_id] = $workerunit;
+				} //if the workerunit exitsts in the database and was already in the workerUnit array (already in the CT database), no further action is needed. 
 			} else {
+				//if the workerunit didn't exist in the database, make a new entry. 
 				$workerunit = new Workerunit;
 				$workerunit->activity_id = $activity->_id;
-				//$workerunit->unit_id = $unitId;
+				$workerunit->unit_id = $entity['unit_id'];
 				//$workerunit->acceptTime = $acceptTime;
 				//$workerunit->cfChannel = $channel;
 				//$workerunit->cfTrust = $trust;
@@ -101,11 +102,12 @@ class DDGameAPIComponent {
 					'task_data' => $entity['task_data'],
 					'response'  => $entity['response']
 				];
+				
 				$workerunit->crowdAgent_id = $agent->_id;
 				$workerunit->platformWorkerunitId = $entity['judgment_id'];
 				$workerunit->flag = $entity['judgment_flag'];
+				$workerunit->startTime = $entity['created_at'];
 				$workerunit->submitTime = $entity['updated_at'];
-				$workerunit->unit_id = $entity['unit_id'];
 				
 				//if the game type is CellEx, use gameImageTaggingJudgment. 
 				$jugementGameTypeName = $entity['game_type_name'];
